@@ -41,7 +41,7 @@ Follow these steps to set up and run the application locally.
 
 a. **Clone the repository**:
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/Hyungjoonbae-01/Mediroute
 cd mediroute-app
 ```
 
