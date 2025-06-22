@@ -42,25 +42,49 @@ Follow these steps to set up and run the application locally.
 a. **Clone the repository**:
 ```bash
 git clone https://github.com/Hyungjoonbae-01/Mediroute
-cd mediroute-app
+cd Mediroute-app
 ```
 
-b. **Install Backend Dependencies**:
-The backend uses Bun. Navigate to the `backend` directory and install its dependencies.
-```bash
-cd backend
-bun install
-```
+b. **Set up Supabase & Environment Variables**:
+This project requires API keys for Supabase, Google Maps, and Gemini.
 
-c. **Install Frontend Dependencies**:
-Navigate to the `frontend` directory and install its dependencies.
+1.  **Set up Supabase**: Follow the instructions in the "Set up Supabase" section below to create your database and get your keys.
+2.  **Create Backend `.env` file**: In the `/backend` directory, create a `.env` file and add your Supabase credentials.
+    ```env
+    # backend/.env
+    SUPABASE_URL=YOUR_SUPABASE_URL_HERE
+    SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY_HERE
+    ```
+3.  **Create Frontend `.env.local` file**: In the `/frontend` directory, create a `.env.local` file and add your Google API keys.
+    ```env
+    # frontend/.env.local
+    GEMINI_API_KEY=YOUR_GEMINI_API_KEY_HERE
+    NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=YOUR_GOOGLE_MAPS_API_KEY_HERE
+    ```
+
+c. **Install All Dependencies**:
+From the root directory of the project, run the following command. 
 ```bash
-cd ../frontend # Or from the root: cd frontend
+cd frontend
 npm install
 ```
 
-d. **Set up Supabase**:
-This project uses Supabase as its database to store patient records.
+```bash
+cd backend
+npm install
+```
+
+### 3. Running the Application
+
+From the root directory, run a single command to start both the backend and frontend servers concurrently:
+```bash
+npm run dev
+```
+The backend will run on `http://localhost:3000` and the frontend on `http://localhost:3001`.
+
+Open your browser and navigate to **[http://localhost:3001](http://localhost:3001)** to see the application.
+
+### Set up Supabase
 
 1.  Go to [Supabase](https://supabase.com/) and create a new project.
 2.  Inside your project, go to the **SQL Editor**.
@@ -84,58 +108,12 @@ This project uses Supabase as its database to store patient records.
     );
     ```
 
-c. **Set up environment variables**:
-
-Create a new file named `.env` in the `backend` directory: `touch backend/.env`
-Open the file and add your Supabase credentials. You can find these in your Supabase project's **Settings > API**.
-
-```env
-# Supabase credentials
-SUPABASE_URL=YOUR_SUPABASE_URL_HERE
-SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY_HERE
-```
-
-Create another file named `.env.local` in the `frontend` directory: `touch frontend/.env.local`
-Open this file and add your Google API keys:
-```env
-# For Gemini AI-powered recommendations
-GEMINI_API_KEY=YOUR_GEMINI_API_KEY_HERE
-
-# For displaying the map and hospitals
-NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=YOUR_GOOGLE_MAPS_API_KEY_HERE
-```
-
-### 3. Running the Application
-
-This project has two separate parts that must be run concurrently in two separate terminal windows.
-
-a. **Start the backend server**:
-From the `backend` directory, run:
-```bash
-bun run dev
-```
-
-b. **Start the frontend development server**:
-From the `frontend` directory, run:
-```bash
-npm run dev
-```
-
-c. **Open the application**:
-
-Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
-
 ### Available Scripts
-
-#### Backend (`/backend`)
-- `bun run dev`: Starts the backend server with hot-reloading.
-- `bun run start`: Starts the backend server.
-
-#### Frontend (`/frontend`)
--   `npm run dev`: Starts the development server.
--   `npm run build`: Creates a production build.
--   `npm run start`: Starts the production server after a build.
--   `npm run lint`: Runs ESLint to check for code quality issues.
+All scripts are run from the project's root directory.
+- `npm run dev`: Starts both backend and frontend servers.
+- `npm run dev:backend`: Starts only the backend server.
+- `npm run dev:frontend`: Starts only the frontend server.
+- `npm install`: Installs dependencies for both projects.
 
 ---
 
