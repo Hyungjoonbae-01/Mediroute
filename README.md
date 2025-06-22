@@ -9,7 +9,6 @@ MediRoute is a smart, proof-of-concept application designed to optimize emergenc
 - **Smart Hospital Matching**: Ranks nearby hospitals based on equipment availability and distance.
 - **Interactive Map View**: Displays the user's location and the top three recommended hospitals on a Google Map.
 - **Seamless Navigation**: One-click navigation that opens Google Maps with driving directions to the selected hospital.
-- **Robust Fallbacks**: Gracefully handles situations where the user's location is unavailable.
 
 ## Tech Stack
 
